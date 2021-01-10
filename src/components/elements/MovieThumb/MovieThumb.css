@@ -93,8 +93,10 @@
   z-index: 1;
   height: 100%;
   right: 0;
-  background-size: cover;
   border-radius: 11px;
+  background-position: 5% 0;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 @media screen and (min-width: 768px) {

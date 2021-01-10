@@ -31,7 +31,7 @@ const MovieThumb = (props) => {
                       </ul>
                   </div>
               </div>
-              <div className="blur_back bright_back" style={{background: `url(${props.movieBg})`}}/>
+              <div className="blur_back bright_back" style={{backgroundImage: `url(${props.movieBg})`}}/>
           </div>
       </div>
   )
