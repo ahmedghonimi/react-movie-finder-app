@@ -35,6 +35,7 @@
   height: 40px;
   width: 90%;
   color: #fff;
+  font-family: "Montserrat", helvetica, arial, sans-serif;
 }
 
 .rmdb-searchbar-input:focus {
