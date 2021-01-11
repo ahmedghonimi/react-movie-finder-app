@@ -1,44 +1,57 @@
 import React from 'react';
 import './Movie.css';
+import axios from "axios";
+import {BASE_URL, API_URL, API_KEY, IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE} from '../../config';
 
 class Movie extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            selectedMovie: [],
+
+        };
     }
 
     componentDidMount () {
         const { match: { params } } = this.props;
 
-        console.log(params);
+        console.log(`${API_URL}movie/${params.movieId}?api_key=${API_KEY}`);
+
+        axios.get(`${API_URL}movie/${params.movieId}?api_key=${API_KEY}`)
+            .then((response) => {
+                console.log(response.data);
+                let selectedMovie = response.data;
+                this.setState({
+                    selectedMovie
+                })
+            })
+            .catch((error) => {
+               console.log(error);
+            });
     }
+
     render() {
+        let genres = this.state.selectedMovie.genres;
         return (
             <div className="movie-card">
                 <div className="container">
 
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/hobbit_cover.jpg" alt="cover"
+                    <img src={`${IMAGE_BASE_URL}w200${this.state.selectedMovie.poster_path}`} alt="cover"
                          className="cover"/>
 
-                    <div className="hero">
+                    <div className="hero" style={{backgroundImage: `url(${IMAGE_BASE_URL}${BACKDROP_SIZE}${this.state.selectedMovie.backdrop_path})`}}>
                         <div className="details">
-                            <div className="title1">The Hobbit <span>PG-13</span></div>
-                            <span className="likes">109 likes</span>
+                            <div className="title1">{this.state.selectedMovie.title} <span>{this.state.selectedMovie.vote_average}</span></div>
+                            <span className="likes">{this.state.selectedMovie.popularity} likes</span>
                         </div>
                     </div>
 
                     <div className="description">
-                        <div className="column1">
-
-                        </div>
+                        <div className="column1" />
                         <div className="column2">
-                            <span className="tag">action</span>
-                            <span className="tag">fantasy</span>
-                            <span className="tag">adventure</span>
-                            <p>Bilbo Baggins is swept into a quest to reclaim the lost Dwarf Kingdom of Erebor from the
-                                fearsome dragon Smaug. Approached out of the blue by the wizard Gandalf the Grey, Bilbo
-                                finds himself joining a company of thirteen dwarves led by the legendary warrior, Thorin
-                                Oakenshield. Their journey will take them into the Wild; through.
+
+                            <p>
+                                { this.state.selectedMovie.overview }
                             </p>
                         </div>
                     </div>

@@ -128,7 +128,7 @@ export default class Home extends React.Component {
                     </FourColGrid>
                 </div>
                 <Spinner loading={loading} />
-                <LoadMore />
+                <LoadMore loadMore={this.loadMoreMovies} />
             </div>
         )
     }
