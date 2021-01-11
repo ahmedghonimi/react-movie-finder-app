@@ -14,19 +14,20 @@ class Movie extends React.Component {
 
     componentDidMount () {
         const { match: { params } } = this.props;
+        console.log(this.props.match.params);
+        const endpoint = `${API_URL}movie/${params.movieId}?api_key=${API_KEY}&language=en-US`;
+        this.fetchMovie(endpoint);
+    }
 
-        console.log(`${API_URL}movie/${params.movieId}?api_key=${API_KEY}`);
-
-        axios.get(`${API_URL}movie/${params.movieId}?api_key=${API_KEY}`)
-            .then((response) => {
+    fetchMovie(endpoint) {
+        axios.get(endpoint).then((response) => {
                 //console.log(response.data);
                 let selectedMovie = response.data;
                 this.setState({
                     selectedMovie
                 })
-            })
-            .catch((error) => {
-               console.log(error);
+            }).catch((error) => {
+                console.log(error);
             });
     }
 

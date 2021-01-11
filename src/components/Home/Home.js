@@ -90,7 +90,7 @@ export default class Home extends React.Component {
     }
 
     render() {
-        const {heroImg, loading, searchTerm, movies} = this.state;
+        const {heroImg, loading, searchTerm, movies, totalPages, currentPage} = this.state;
         return (
             <div className="rmdb-home">
                 {
@@ -127,8 +127,11 @@ export default class Home extends React.Component {
                         }
                     </FourColGrid>
                 </div>
-                <Spinner loading={loading} />
-                <LoadMore loadMore={this.loadMoreMovies} />
+                {loading ? <Spinner /> : null}
+                {(currentPage <= totalPages && !loading) ?
+                    <LoadMore loadMore={this.loadMoreMovies} />
+                    : null
+                }
             </div>
         )
     }
