@@ -1,7 +1,7 @@
 import React from 'react';
 import './Movie.css';
 import axios from "axios";
-import {BASE_URL, API_URL, API_KEY, IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE} from '../../config';
+import {API_URL, API_KEY, IMAGE_BASE_URL, BACKDROP_SIZE} from '../../config';
 
 class Movie extends React.Component {
     constructor(props) {
@@ -31,7 +31,6 @@ class Movie extends React.Component {
     }
 
     render() {
-        let genres = this.state.selectedMovie.genres;
         return (
             <div className="movie-card">
                 <div className="container">
