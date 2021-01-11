@@ -45,7 +45,7 @@ export default class Home extends React.Component {
             this.setState({
                 movies: [...this.state.movies, ...movies],
                 loading: false,
-                heroImg: this.state.heroImg || response.data.results[Math.floor(Math.random() * 20 ) + 1],
+                heroImg: this.state.heroImg || response.data.results[Math.floor(Math.random() * 20 ) + 1], // 0.1 => 0 +1
                 currentPage: response.data.page,
                 totalPages: response.data.total_pages
             });
@@ -91,7 +91,6 @@ export default class Home extends React.Component {
 
     render() {
         const {heroImg, loading, searchTerm, movies} = this.state;
-        console.log(heroImg);
         return (
             <div className="rmdb-home">
                 {

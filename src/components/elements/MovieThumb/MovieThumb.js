@@ -15,20 +15,13 @@ const MovieThumb = (props) => {
                       />
                       <h1>{props.movie.original_title}</h1>
                       <h4>{props.movie.release_date}, David Ayer</h4>
-                      <span className="minutes">117 min</span>
-                      <p className="type">Action, Crime, Fantasy</p>
+                      <span className="minutes">{props.movie.vote_average}</span>
+                      <p className="type">Action, Crime</p>
                   </div>
                   <div className="movie_desc">
                       <p className="text">
                           {(props.movie.overview).substr(0, 200)}...
                       </p>
-                  </div>
-                  <div className="movie_social">
-                      <ul>
-                          <li><i className="material-icons">share</i></li>
-                          <li><i className="material-icons"></i></li>
-                          <li><i className="material-icons">chat_bubble</i></li>
-                      </ul>
                   </div>
               </div>
               <div className="blur_back bright_back" style={{backgroundImage: `url(${props.movieBg})`}}/>
