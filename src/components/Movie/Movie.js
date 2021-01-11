@@ -19,7 +19,7 @@ class Movie extends React.Component {
 
         axios.get(`${API_URL}movie/${params.movieId}?api_key=${API_KEY}`)
             .then((response) => {
-                console.log(response.data);
+                //console.log(response.data);
                 let selectedMovie = response.data;
                 this.setState({
                     selectedMovie

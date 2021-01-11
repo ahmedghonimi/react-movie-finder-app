@@ -39,7 +39,7 @@ export default class Home extends React.Component {
     // fetch movies from api
     fetchMovies(endpoint) {
         axios.get(endpoint).then((response) =>{
-            console.log(response);
+            //console.log(response);
             const movies = response.data.results;
 
             this.setState({
@@ -50,7 +50,7 @@ export default class Home extends React.Component {
                 totalPages: response.data.total_pages
             });
 
-            console.log(this.state);
+            //console.log(this.state);
         }).catch(error => {
             console.log(error);
         })
