@@ -8,7 +8,6 @@ class Movie extends React.Component {
         super(props);
         this.state = {
             selectedMovie: [],
-
         };
     }
 
